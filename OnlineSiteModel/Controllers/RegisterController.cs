@@ -21,23 +21,22 @@ namespace OnlineSiteModel.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateAccount(string uname,string pw)
-        {
+        public ActionResult CreateAccount(string email,string pw)
+        {   
             var reg = rep.GetRegistration();
             bool flag = false;
             foreach(var r in reg)
             {
-                if (r.UserName == uname && r.Password == pw) {
+                if (r.Email == email && r.Password == pw) {
                     flag = true;
                     Session["uid"] = r.UserID;
+                    Session["uname"] = r.UserName;
                     break;
                         }
             }
             if (flag)
             {
-                Session["uname"] = uname;
- 
-                return Redirect("/Home/index");
+                 return Redirect("/Home/index");
             }
             else
             {

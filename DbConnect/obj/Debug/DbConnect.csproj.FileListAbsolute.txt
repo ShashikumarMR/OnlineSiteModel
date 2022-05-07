@@ -9,3 +9,4 @@ I:\OnlineSiteModel\DbConnect\obj\Debug\DbConnect.csproj.CoreCompileInputs.cache
 I:\OnlineSiteModel\DbConnect\obj\Debug\DbConnect.csproj.CopyComplete
 I:\OnlineSiteModel\DbConnect\obj\Debug\DbConnect.dll
 I:\OnlineSiteModel\DbConnect\obj\Debug\DbConnect.pdb
+I:\OnlineSiteModel\DbConnect\obj\Debug\DbConnect.csproj.AssemblyReference.cache

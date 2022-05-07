@@ -12,22 +12,20 @@ namespace DbConnect
     using System;
     using System.Collections.Generic;
     
-    public partial class Registration
+    public partial class Event
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Registration()
+        public Event()
         {
-            this.Carts = new HashSet<Cart>();
+            this.Coupons = new HashSet<Coupon>();
         }
     
-        public int UserID { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string Address { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
+        public int EventID { get; set; }
+        public string EventName { get; set; }
+        public System.DateTime StartDate { get; set; }
+        public System.DateTime EndDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts { get; set; }
+        public virtual ICollection<Coupon> Coupons { get; set; }
     }
 }

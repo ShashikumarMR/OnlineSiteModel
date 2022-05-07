@@ -21,13 +21,14 @@ namespace OnlineSiteModel.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult NewAccount(string uname, int mnumber, string pw, string cpw, string address)
+        public ActionResult NewAccount(string uname, string email, string mnumber, string pw, string cpw, string address)
         {
             DbConnect.Registration reg = new DbConnect.Registration()
             {
               UserName=uname,
               Phone=mnumber,
-              Password=pw,
+              Email= email,
+              Password =pw,
               Address=address
             };
             if (cpw != pw)

@@ -22,6 +22,7 @@
 
 <h3>Product Add</h3>
 <form class="form-horizontal col-4  p-3 mx-auto" method="post" action="">
+    @Html.AntiForgeryToken()
     <div class="form-group">
         <label class="control-label" for="pname">
             product name
@@ -65,9 +66,9 @@
         <input type="text" class="form-control" name="desc" id="desc" required />
     </div>
     <div class="form-group">
-        <label class="control-label" for="imgFile">
+        <label class="control-label" for="ImgPath">
         </label>
-        <input type="file" class="form-control" name="imgFile" id="imgFile" required />
+        <input type="file" class="form-control" name="ImgPath" id="ImgPath" required />
     </div>
     <button type="submit" class="btn btn-primary mx-auto text-center">Add</button>
 </form>

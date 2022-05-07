@@ -227,6 +227,21 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Admin\Scripts\bootstrap.js" />
+    <Content Include="Views\Admin\Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <None Include="Views\Admin\Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Views\Admin\Scripts\jquery-3.4.1.js" />
+    <Content Include="Views\Admin\Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Views\Admin\Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Views\Admin\Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Views\Admin\Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Views\Admin\Scripts\jquery.validate.js" />
+    <Content Include="Views\Admin\Scripts\jquery.validate.min.js" />
+    <Content Include="Views\Admin\Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Views\Admin\Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Views\Admin\Scripts\modernizr-2.8.3.js" />
     <Content Include="script\script.js" />
     <Content Include="styles\style.css" />
     <Content Include="Web.config" />
@@ -268,15 +283,15 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Views\Admin\Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Views\Admin\Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DbConnect\DbConnect.csproj">
-      <Project>{9b988b89-aa56-4ca2-9025-bda4c67dbaa4}</Project>
+      <Project>{1310960e-6ce6-4a52-aabc-dae49d79b38e}</Project>
       <Name>DbConnect</Name>
     </ProjectReference>
   </ItemGroup>

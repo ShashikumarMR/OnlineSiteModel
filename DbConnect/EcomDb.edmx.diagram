@@ -4,15 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b28e0948d29640829baa995aa6417df4" Name="Diagram1">
-        <EntityTypeShape EntityType="EcomModel.Cart" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcomModel.Category" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcomModel.ImageTable" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcomModel.Product" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="EcomModel.Registration" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+      <Diagram DiagramId="1256c81ed6174a9e8293a18a4b47307d" Name="Diagram1">
+        <EntityTypeShape EntityType="EcomModel.Admin" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcomModel.Cart" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcomModel.Category" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcomModel.Coupon" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcomModel.Event" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcomModel.ImageTable" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcomModel.Product" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcomModel.Registration" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
         <AssociationConnector Association="EcomModel.FK__Cart__ProductID__1B0907CE" ManuallyRouted="false" />
         <AssociationConnector Association="EcomModel.FK__Cart__UserID__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="EcomModel.FK__Coupon__Category__25869641" ManuallyRouted="false" />
         <AssociationConnector Association="EcomModel.FK__Products__Catego__1273C1CD" ManuallyRouted="false" />
+        <AssociationConnector Association="EcomModel.FK__Coupon__EventID__267ABA7A" ManuallyRouted="false" />
         <AssociationConnector Association="EcomModel.FK__ImageTabl__Produ__173876EA" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

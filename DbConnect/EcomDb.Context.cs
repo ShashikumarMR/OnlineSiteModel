@@ -25,8 +25,11 @@ namespace DbConnect
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Admin> Admins { get; set; }
         public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Coupon> Coupons { get; set; }
+        public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<ImageTable> ImageTables { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Registration> Registrations { get; set; }

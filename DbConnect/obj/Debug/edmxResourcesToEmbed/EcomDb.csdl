@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="EcomModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdminName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
   <EntityType Name="Cart">
     <Key>
       <PropertyRef Name="CartId" />
@@ -16,7 +24,30 @@
     </Key>
     <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CategoryName" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Coupons" Relationship="Self.FK__Coupon__Category__25869641" FromRole="Category" ToRole="Coupon" />
     <NavigationProperty Name="Products" Relationship="Self.FK__Products__Catego__1273C1CD" FromRole="Category" ToRole="Products" />
+  </EntityType>
+  <EntityType Name="Coupon">
+    <Key>
+      <PropertyRef Name="CouponID" />
+    </Key>
+    <Property Name="CouponID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CouponName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Discount" Type="Double" Nullable="false" />
+    <Property Name="CategoryID" Type="Int32" />
+    <Property Name="EventID" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__Coupon__Category__25869641" FromRole="Coupon" ToRole="Category" />
+    <NavigationProperty Name="Event" Relationship="Self.FK__Coupon__EventID__267ABA7A" FromRole="Coupon" ToRole="Event" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="EventID" />
+    </Key>
+    <Property Name="EventID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Coupons" Relationship="Self.FK__Coupon__EventID__267ABA7A" FromRole="Event" ToRole="Coupon" />
   </EntityType>
   <EntityType Name="ImageTable">
     <Key>
@@ -49,9 +80,10 @@
     </Key>
     <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Phone" Type="Int32" />
     <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
     <Property Name="Address" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Carts" Relationship="Self.FK__Cart__UserID__1A14E395" FromRole="Registration" ToRole="Cart" />
   </EntityType>
   <Association Name="FK__Cart__ProductID__1B0907CE">
@@ -82,6 +114,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Coupon__Category__25869641">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Coupon" Type="Self.Coupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Coupon">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Products__Catego__1273C1CD">
     <End Role="Category" Type="Self.Category" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
@@ -93,6 +139,20 @@
       </Principal>
       <Dependent Role="Products">
         <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Coupon__EventID__267ABA7A">
+    <End Role="Event" Type="Self.Event" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Coupon" Type="Self.Coupon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="EventID" />
+      </Principal>
+      <Dependent Role="Coupon">
+        <PropertyRef Name="EventID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -111,8 +171,11 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="EcomEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
     <EntitySet Name="Carts" EntityType="Self.Cart" />
     <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Coupons" EntityType="Self.Coupon" />
+    <EntitySet Name="Events" EntityType="Self.Event" />
     <EntitySet Name="ImageTables" EntityType="Self.ImageTable" />
     <EntitySet Name="Products" EntityType="Self.Product" />
     <EntitySet Name="Registrations" EntityType="Self.Registration" />
@@ -124,9 +187,17 @@
       <End Role="Registration" EntitySet="Registrations" />
       <End Role="Cart" EntitySet="Carts" />
     </AssociationSet>
+    <AssociationSet Name="FK__Coupon__Category__25869641" Association="Self.FK__Coupon__Category__25869641">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Coupon" EntitySet="Coupons" />
+    </AssociationSet>
     <AssociationSet Name="FK__Products__Catego__1273C1CD" Association="Self.FK__Products__Catego__1273C1CD">
       <End Role="Category" EntitySet="Categories" />
       <End Role="Products" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Coupon__EventID__267ABA7A" Association="Self.FK__Coupon__EventID__267ABA7A">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Coupon" EntitySet="Coupons" />
     </AssociationSet>
     <AssociationSet Name="FK__ImageTabl__Produ__173876EA" Association="Self.FK__ImageTabl__Produ__173876EA">
       <End Role="Products" EntitySet="Products" />

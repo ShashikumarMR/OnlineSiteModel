@@ -17,16 +17,17 @@ namespace OnlineSiteModel.Controllers
             rep = new Repository();  
         }
         // GET: Admin
+        [HttpGet]
         public ActionResult ProductAdd()
         {
             ViewBag.Category = rep.GetCategories();
             return View();
         }
-        [HttpPost]
-        public ActionResult ProductAdd(string pname, Nullable<double> price, Nullable<int> Category, Nullable<double> weight, Nullable<int> stock, string desc,string ImgPath)
+        public ActionResult ProductAdd(string pname, Nullable<double> price, Nullable<int> Category, Nullable<double> weight, Nullable<int> stock, string desc, string ImgPath)
         {
             ViewBag.Category = rep.GetCategories();
-            var prod = new DbConnect.Product() {
+            var prod = new DbConnect.Product()
+            {
                 productName = pname,
                 price = price,
                 CategoryId = Category,
@@ -34,24 +35,42 @@ namespace OnlineSiteModel.Controllers
                 stock = stock,
                 Description = desc,
             };
+            bool productAdded = false;
+            if (rep.ProductToDb(prod))
+            {
+                productAdded = false;
+            }
+            else
+            {
+                productAdded = false;
+            }
 
-            Image img = Image.FromFile(@"C:\Users\ADMIN\Downloads\iimage\OIP.jfif");
+            string path = "D:\\html\\iimage\\" + ImgPath;
+            Image img = Image.FromFile(path);
             var Img = new DbConnect.ImageTable();
             Img.image_name = pname;
             Img.ProductID = rep.GetProductId(pname);
-            using (var ms = new MemoryStream()) {
+            using (var ms = new MemoryStream())
+            {
                 img.Save(ms, img.RawFormat);
                 Img.image = ms.ToArray();
             }
-
-            if (rep.ProductToDb(prod, Img))
+            bool imageAdded = false;
+            if (rep.ImageToDb(Img))
+            {
+                imageAdded = false;
+            }
+            else
+            {
+                imageAdded = false;
+            }
+            ViewBag.status = false;
+            if (productAdded && imageAdded)
             {
                 ViewBag.status = true;
             }
-            else {
-                ViewBag.status = false;
-            }
-                return View();
+
+            return View();
         }
     }
 }

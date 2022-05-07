@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9B988B89-AA56-4CA2-9025-BDA4C67DBAA4}</ProjectGuid>
+    <ProjectGuid>{1310960E-6CE6-4A52-AABC-DAE49D79B38E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DbConnect</RootNamespace>
@@ -50,10 +50,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.cs">
+      <DependentUpon>EcomDb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Cart.cs">
       <DependentUpon>EcomDb.tt</DependentUpon>
     </Compile>
     <Compile Include="Category.cs">
+      <DependentUpon>EcomDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Coupon.cs">
       <DependentUpon>EcomDb.tt</DependentUpon>
     </Compile>
     <Compile Include="EcomDb.Context.cs">
@@ -70,6 +76,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EcomDb.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Event.cs">
+      <DependentUpon>EcomDb.tt</DependentUpon>
     </Compile>
     <Compile Include="ImageTable.cs">
       <DependentUpon>EcomDb.tt</DependentUpon>
