@@ -45,7 +45,7 @@ namespace OnlineSiteModel.Controllers
                 productAdded = false;
             }
 
-            string path = "D:\\html\\iimage\\" + ImgPath;
+            string path = "I:\\OSM\\images\\" + ImgPath;
             Image img = Image.FromFile(path);
             var Img = new DbConnect.ImageTable();
             Img.image_name = pname;

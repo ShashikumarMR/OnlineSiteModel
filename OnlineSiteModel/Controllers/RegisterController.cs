@@ -52,9 +52,15 @@ namespace OnlineSiteModel.Controllers
         }
 
         public ActionResult AccountDetail() {
-            var reg = rep.IndividualDetails(Convert.ToInt32(Session["uid"].ToString()));
-            ViewBag.reg = reg;
-            return View();
+            if (Session["uid"] != null) {
+                var reg = rep.IndividualDetails(Convert.ToInt32(Session["uid"].ToString()));
+                ViewBag.reg = reg;
+                return View();
+            }
+            else {
+                return Redirect("/Register/CreateAccount");
+            }
+          
         }
     }
 }
