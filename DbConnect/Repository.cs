@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace DbConnect
 {
@@ -116,6 +117,19 @@ namespace DbConnect
             }
         }
 
+        public bool ProdDelete(int pid)
+        {
+            con.Products.Remove(GetProduct(pid));
+            if (con.SaveChanges() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public ImageTable GetProductIamgeData(int pid)
         {
             var img = (from b in con.ImageTables where b.ProductID == pid select b).ToList();
@@ -127,5 +141,19 @@ namespace DbConnect
             var pid = from id in GetProdAll() where (id.productName == pname) select id.ProductID;
             return Convert.ToInt32(pid.ToList()[0]);
         }
+        public List<Product> GetProdByName(string pat)
+        {
+
+            Regex re = new Regex("^.*" + pat.ToLower() + ".*$");
+            List<Product> ls = new List<Product>();
+            foreach (var p in GetProdAll())
+            {
+                if (re.IsMatch(p.productName.ToLower()))
+                {
+                    ls.Add(p);
+                }
+            }
+            return ls;
+        } 
     }
 }

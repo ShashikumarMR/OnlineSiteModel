@@ -1,23 +1,17 @@
-﻿
-
-@{
-    ViewBag.Title = "admin";
-}
-@if (ViewBag.status != null)
+﻿@{ ViewBag.Title = "admin"; }
+@if (TempData["status"] != null)
 {
     if (Convert.ToBoolean(TempData["status"]))
     {
-        <div class="alert alert-success pt-0 w-100 text-center alertHeightModify" role="alert">
-            Successfully removed from cart!
-        </div>
-    }
-    else
-    {
-        <div class="alert alert-danger pt-0 w-100 text-center alertHeightModify" role="alert">
-            Successfully Added.
-        </div>
-    }
-}
+<div class="alert alert-success pt-0 w-100 text-center alertHeightModify" role="alert">
+    Successfully added!
+</div> }
+                else
+                {
+<div class="alert alert-danger pt-0 w-100 text-center alertHeightModify" role="alert">
+    oops!could not add.
+</div>}
+            }
 
 
 <h3>Product Add</h3>
@@ -43,8 +37,7 @@
             <option selected>Select</option>
             @foreach (var c in ViewBag.Category)
             {
-                <option value=@c.CategoryId>@c.CategoryName</option>
-            }
+<option value=@c.CategoryId>@c.CategoryName</option>            }
         </select>
     </div>
     <div class="form-group">

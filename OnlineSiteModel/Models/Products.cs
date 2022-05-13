@@ -8,6 +8,7 @@ namespace OnlineSiteModel.Models
     public class Products
     {
         public int ProductID { get; set; }
+        
         public string productName { get; set; }
         public Nullable<int> CategoryId { get; set; }
         public Nullable<double> price { get; set; }

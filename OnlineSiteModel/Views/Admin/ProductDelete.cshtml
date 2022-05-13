@@ -1,0 +1,28 @@
+﻿
+@if (TempData["status"] != null)
+{
+    if (Convert.ToBoolean(TempData["status"]))
+    {
+<div class="alert alert-success pt-0 w-100 text-center alertHeightModify" role="alert">
+    Successfully deleted!
+</div> }
+                else
+                {
+<div class="alert alert-danger pt-0 w-100 text-center alertHeightModify" role="alert">
+    oops!could not delete.
+</div>}
+            }
+
+<div class="row mt-5">
+    <form class="col-4 mx-auto justify-content-center" method="post" action="">
+        <p class="lead">Select product</p>
+        <select class="custom-select" name="pid">
+            <option selected>Select</option>
+            @foreach (var p in ViewBag.Products)
+            {
+<option value=@p.ProductID>@p.productName</option>}
+        </select><br />
+        <button type="submit" class="btn-sm btn-danger w-15 mt-3">Delete</button>
+    </form>
+
+</div>

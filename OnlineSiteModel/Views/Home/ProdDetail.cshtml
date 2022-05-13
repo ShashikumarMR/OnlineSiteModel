@@ -112,7 +112,7 @@
                     <div class="row justify-content-center" target="/Home/AddMyCart">
            
                         <button class="btn btn-primary w-25 m-2 p-2"><a href='/Home/AddMyCart?id=@Model.ProductID.ToString()' class="btnText text-white">Add cart</a></button>
-                        <button class="btn btn-primary w-25 m-2 p-2"><a href='I:/OnlineSiteModel/payment.html' class="btnText text-white">Buy Now</a></button>
+                        <button class="btn btn-primary w-25 m-2 p-2"><a href='/buyNow/BuyNow' class="btnText text-white">Buy Now</a></button>
                         <p class="text-danger">@TempData["msg"]</p>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
                         <h4 class="display-4">@Model.productName</h4>
                         <p class="lead mt-2">
                             Price : @Model.price<span>
-                                <img src="~/Images/currency-dollar.svg" />
+                                <img src="~/Images/icons8-rupee-24.png" />
                             </span>
                         </p>             <p class="lead  mt-2">Weight: @Model.weight kg</p>
 

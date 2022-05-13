@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DbConnect;
 using System.Drawing;
 using System.IO;
-using DbConnect;
 
 namespace OnlineSiteModel.Controllers
 {
@@ -14,15 +14,15 @@ namespace OnlineSiteModel.Controllers
         Repository rep;
         public AdminController()
         {
-            rep = new Repository();  
+            rep = new Repository();
         }
         // GET: Admin
-        [HttpGet]
         public ActionResult ProductAdd()
         {
             ViewBag.Category = rep.GetCategories();
             return View();
         }
+        [HttpPost]
         public ActionResult ProductAdd(string pname, Nullable<double> price, Nullable<int> Category, Nullable<double> weight, Nullable<int> stock, string desc, string ImgPath)
         {
             ViewBag.Category = rep.GetCategories();
@@ -38,11 +38,7 @@ namespace OnlineSiteModel.Controllers
             bool productAdded = false;
             if (rep.ProductToDb(prod))
             {
-                productAdded = false;
-            }
-            else
-            {
-                productAdded = false;
+                productAdded = true;
             }
 
             string path = "I:\\OSM\\images\\" + ImgPath;
@@ -58,18 +54,33 @@ namespace OnlineSiteModel.Controllers
             bool imageAdded = false;
             if (rep.ImageToDb(Img))
             {
-                imageAdded = false;
+                imageAdded = true;
             }
-            else
-            {
-                imageAdded = false;
-            }
+
             ViewBag.status = false;
             if (productAdded && imageAdded)
             {
-                ViewBag.status = true;
+                TempData["status"] = true;
             }
 
+            return View();
+        }
+
+        public ActionResult ProductDelete()
+        {
+            ViewBag.Products = rep.GetProdAll();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ProductDelete(int pid)
+        {
+            TempData["status"] = false;
+            ViewBag.Products = rep.GetProdAll();
+            if (rep.ProdDelete(pid))
+            {
+                TempData["status"] = true;
+            }
             return View();
         }
     }

@@ -3,52 +3,87 @@
     padding: 0;
 }
 
-.carousel-inner .carousel-item {
-    height: 300px;
+
+.carousel-item img {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 30%;
+}
+
+@media screen and (max-width:576px) {
+    .carousel-inner .carousel-item {
+        height: 100px;
+    }
+
+    .carousel-item img {
+        min-height: 30%;
+    }
+}
+
+@media screen and (min-width:576px) {
+    .carousel-inner .carousel-item {
+        height: 200px;
+    }
+
+    .carousel-item img {
+        min-height: 50%;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .carousel-inner .carousel-item {
+        height: 300px;
+    }
+
+    .carousel-item img {
+        min-height: 40%;
+    }
 }
 
 #cartIcon {
     width: 1.5em;
     height: 1.5em;
 }
+
 #brandName {
     text-decoration: none;
     font-family: 'Oleo Script', cursive;
-    font-size:1.2em;
-    color:white;
+    font-size: 1.2em;
+    color: white;
 }
+
     #brandName span {
         font-size: 1.5em;
     }
+        
 
-    .carousel-item img {
-        position: absolute;
-        top: 0;
-        left: 0;
-        min-height: 30%;
-    }
+
 .Profile {
-   position:absolute;
-   right:20px;
-   top:0;
+    position: absolute;
+    right: 20px;
+    top: 0;
 }
+
 #loginOpt {
     text-decoration: none;
     color: white;
     font-family: 'PT Sans', sans-serif;
 }
+
 @media only screen and (max-width:588px) {
-    .Profile{
-        position:absolute;
-        top:-90px;
+    .Profile {
+        position: absolute;
+        top: -90px;
     }
 }
 
-#heartIcon{
+#heartIcon {
     position: absolute;
     right: 35px;
-
 }
+
 #profileIcon {
     width: 3.5em;
     height: 3.5em;
@@ -61,22 +96,27 @@
 
 
 .filterBar {
-  background-color:#f1f1f1;
+    background-color: #f1f1f1;
 }
 
 output {
-display:inline-block;
+    display: inline-block;
 }
 
 #ProdName {
     font-family: 'PT Sans', sans-serif;
 }
 
-#ProdImg{
-    width:8em;
-    height:8em;
+#ProdImg {
+    width: 8em;
+    height: 8em;
 }
 
 .alertHeightModify {
- height:2em;
+    height: 2em;
+}
+
+#vp {
+    background-color: #2a2626;
+    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 2px 6px 2px rgba(60, 64, 67, 0.149);
 }
